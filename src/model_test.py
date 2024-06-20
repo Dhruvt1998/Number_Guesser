@@ -9,8 +9,12 @@ mnist = tf.keras.datasets.mnist
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 x_test = tf.keras.utils.normalize(x_test, axis=1)
 
-# Binarize the test data to match training preprocessing
-x_test = np.where(x_test > 0, 1, 0)
+# Binarize the training data
+for train in range(len(x_train)):
+    for row in range(28):
+        for x in range(28):
+            if x_train[train][row][x] != 0:
+                x_train[train][row][x] = 1
 
 # Load the saved model without the optimizer state
 model = tf.keras.models.load_model('model.h5')

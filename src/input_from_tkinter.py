@@ -80,11 +80,10 @@ class grid(object):
 
     def clicked(self, pos): #Return the position in the grid that user clicked on
         try:
-            t = pos[0]
-            w = pos[1]
-            g1 = int(t) // self.pixels[0][0].width
-            g1 = int(t) // self.pixels[0][0].width
-            g2 = int(w) // self.pixels[0][0].height
+            t = pos[0]  # x-cordinate
+            w = pos[1]  # y-cordinate
+            g1 = int(t) // self.pixels[0][0].width  # column index
+            g2 = int(w) // self.pixels[0][0].height  # row index
 
             return self.pixels[g2][g1]
         except:

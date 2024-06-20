@@ -19,7 +19,7 @@ for train in range(len(x_train)):
 model = tf.keras.models.Sequential([
     tf.keras.layers.Input(shape=(28, 28)),
     tf.keras.layers.Flatten(),
-    tf.keras.layers.Dense(128, activation='relu'),
+    tf.keras.layers.Dense(128, activation='relu'), # ReLU(x) = max(0,x)
     tf.keras.layers.Dense(128, activation='relu'),
     tf.keras.layers.Dense(10, activation='softmax')
 ])
