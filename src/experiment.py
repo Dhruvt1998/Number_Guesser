@@ -1,11 +1,13 @@
 import threading
 
-from src.model_training import prepare_datasets, train_model
+from src.model_training import prepare_datasets, train_model, ModelVariant
 from src.model_test import evaluate
 
 accuracies = []
+
+
 def experiment(id: str):
-    train_model(id, x_train, y_train)
+    train_model(id, x_train, y_train, ModelVariant.L2E5)
     accuracies.append(evaluate(id, x_test, y_test, 100, False))
 
 

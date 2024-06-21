@@ -8,10 +8,6 @@ from src import model_training
 
 matplotlib.use('tkagg')
 
-
-
-
-
 '''
 # Load and preprocess the MNIST dataset
 mnist = tf.keras.datasets.mnist
@@ -25,6 +21,7 @@ for train in range(len(x_train)):
         for x in range(28):
             if x_train[train][row][x] != 0:
                 x_train[train][row][x] = 1
+
 
 def evaluate(model_id: str, x_test, y_test, test_size: int, demo: bool):
     # Load the saved model without the optimizer state
