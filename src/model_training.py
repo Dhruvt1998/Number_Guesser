@@ -7,8 +7,8 @@ import numpy as np
 class ModelVariant(Enum):
     L2E5 = 1
     L1E5 = 2
-    L2E3 = 3
-    L1E3 = 4
+    L2E2 = 3
+    L1E2 = 4
 
 
 def prepare_datasets():
@@ -45,6 +45,9 @@ def train_model(model_id: str, x_train: np.array, y_train: np.array, model_varia
 
         # Train the model
         model.fit(x_train, y_train, epochs=5)
+        # Save the model
+        model.save('data/model_' + model_id + '.h5')
+        print("Model " + model_id + " saved")
 
     elif model_variant == ModelVariant.L1E5:
         model = tf.keras.models.Sequential([
@@ -60,8 +63,11 @@ def train_model(model_id: str, x_train: np.array, y_train: np.array, model_varia
 
         # Train the model
         model.fit(x_train, y_train, epochs=5)
+        # Save the model
+        model.save('data/model_' + model_id + '.h5')
+        print("Model " + model_id + " saved")
 
-    elif model_variant == ModelVariant.L2E3:
+    elif model_variant == ModelVariant.L2E2:
         model = tf.keras.models.Sequential([
             tf.keras.layers.Input(shape=(28, 28)),
             tf.keras.layers.Flatten(),
@@ -75,9 +81,12 @@ def train_model(model_id: str, x_train: np.array, y_train: np.array, model_varia
                       metrics=['accuracy'])
 
         # Train the model
-        model.fit(x_train, y_train, epochs=3)
+        model.fit(x_train, y_train, epochs=2)
+        # Save the model
+        model.save('data/model_' + model_id + '.h5')
+        print("Model " + model_id + " saved")
 
-    elif model_variant == ModelVariant.L1E3:
+    elif model_variant == ModelVariant.L1E2:
         model = tf.keras.models.Sequential([
             tf.keras.layers.Input(shape=(28, 28)),
             tf.keras.layers.Flatten(),
@@ -91,14 +100,15 @@ def train_model(model_id: str, x_train: np.array, y_train: np.array, model_varia
                       metrics=['accuracy'])
 
         # Train the model
-        model.fit(x_train, y_train, epochs=3)
+        model.fit(x_train, y_train, epochs=2)
+        # Save the model
+        model.save('data/model_' + model_id + '.h5')
+        print("Model " + model_id + " saved")
 
     else:
         print("No correct model variant")
 
-    # Save the model
-    model.save('data/model_' + model_id + '.h5')
-    print("Model " + model_id + " saved")
+
 
 
 if __name__ == '__main__':
